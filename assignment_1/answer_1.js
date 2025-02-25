@@ -49,7 +49,7 @@ function scaleBalancing(scaleValues, list) {
   // Calculate the difference between the left and right
   const diff = Math.abs(left - right);
 
-  // TBalancing with one weight
+  // Balancing with one weight
   for (let weight of list) {
     if (weight === diff) {
       if (left < right) {
