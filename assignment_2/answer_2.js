@@ -1,4 +1,24 @@
-// Function to calculate the largest square of 1's
+// Check if a string contains only 0s and 1s
+function isBinaryString(row) {
+  return row.split("").every((char) => char === "0" || char === "1");
+}
+
+// Validate the matrix input
+function isValidMatrixInput(strArr) {
+  if (strArr.length === 0) return false; // If input is empty, return false
+
+  const rowLength = strArr[0].length; // Get the length of the first row
+
+  for (let row of strArr) {
+    if (!isBinaryString(row) || row.length !== rowLength) {
+      return false; // Return false if row contains anything other than 0 or 1, or lengths don't match
+    }
+  }
+
+  return true; // Return true if all rows are valid
+}
+
+// Calculate the largest square of 1's
 function MaximalSquare(strArr) {
   const matrix = strArr.map((row) => row.split("").map(Number));
 
@@ -26,7 +46,7 @@ function MaximalSquare(strArr) {
   return maxSide * maxSide;
 }
 
-// Function to process the input and display the result
+// Get the input and display the result
 function calculateMaximalSquare() {
   const input = document.getElementById("matrixInput").value.trim();
 
@@ -38,6 +58,13 @@ function calculateMaximalSquare() {
 
   // Split the input into an array of strings
   const strArr = input.split(",").map((row) => row.trim());
+
+  // Validate input format
+  if (!isValidMatrixInput(strArr)) {
+    document.getElementById("result").textContent =
+      "Invalid input! Only 0s and 1s are used & all rows are of equal length.";
+    return;
+  }
 
   const result = MaximalSquare(strArr);
 
