@@ -88,6 +88,9 @@ function calculateMaximalSquare() {
   const input = document.getElementById("matrixInput").value.trim();
 
   if (!input) {
+    const matrixDisplay = document.getElementById("matrixDisplay");
+    matrixDisplay.innerHTML = "";
+
     document.getElementById("result").textContent =
       "Please enter a valid matrix.";
     return;
@@ -98,6 +101,9 @@ function calculateMaximalSquare() {
 
   // Validate input format
   if (!isValidMatrixInput(strArr)) {
+    const matrixDisplay = document.getElementById("matrixDisplay");
+    matrixDisplay.innerHTML = "";
+
     document.getElementById("result").textContent =
       "Invalid input! Only 0s and 1s are used & all rows are of equal length.";
     return;
